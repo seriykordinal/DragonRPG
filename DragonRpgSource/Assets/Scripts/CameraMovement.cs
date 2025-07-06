@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("I hope it s work");
-    }
+    [SerializeField] private GameObject Player;
+    private Vector3 _offset = new Vector3(-1.5f, 1.5f, -3f);
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        Move();
+    }
+    //сделать на колесико мышки отдаление
+    void Move()
+    {
+        transform.position = Player.transform.position + _offset;
+
+        if (Input.GetKeyDown(KeyCode.CapsLock))
+        {
+            _offset.x = -_offset.x;
+        }
     }
 }
